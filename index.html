@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sunrax</title>
+
+<link rel="icon" href="https://raw.githubusercontent.com/sunraxads/sunraxanalyst/refs/heads/main/Picsart_26-04-18_13-09-55-301.jpg.jpeg">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '493975764970664');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=493975764970664&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+color:white;
+text-align:center;
+overflow-x:hidden;
+
+background:linear-gradient(-45deg,#081f3f,#0a2f5e,#0c3d78,#081f3f);
+background-size:400% 400%;
+animation:bgmove 16s infinite;
+}
+
+@keyframes bgmove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.container{
+padding:50px 20px;
+}
+
+/* PROFILE */
+
+.profile{
+
+position:relative;
+width:140px;
+height:140px;
+
+margin:auto;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+.profile::before{
+
+content:"";
+position:absolute;
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+
+background:conic-gradient(
+#feda75,
+#fa7e1e,
+#d62976,
+#962fbf,
+#4f5bd5,
+#feda75
+);
+
+animation:ringRotate 6s linear infinite;
+
+}
+
+@keyframes ringRotate{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+.profile img{
+
+width:120px;
+height:120px;
+
+border-radius:50%;
+
+border:5px solid #081f3f;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* TEXT */
+
+.channel{
+
+font-size:28px;
+font-weight:bold;
+margin-top:20px;
+
+}
+
+.tagline{
+
+opacity:.8;
+margin-top:5px;
+
+}
+
+.trust{
+
+margin-top:12px;
+font-size:16px;
+color:#00ffc6;
+font-weight:bold;
+
+}
+
+/* TIMER */
+
+.timer{
+
+margin-top:20px;
+color:#ff4d4d;
+font-size:18px;
+font-weight:bold;
+
+}
+
+/* BUTTON */
+
+.join-btn{
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+margin-top:25px;
+
+padding:16px 30px;
+
+background:#229ED9;
+
+border-radius:40px;
+
+font-size:18px;
+font-weight:bold;
+
+text-decoration:none;
+color:white;
+
+box-shadow:0 0 18px rgba(34,158,217,.8);
+
+position:relative;
+
+overflow:hidden;
+
+animation:pulse 2s infinite;
+
+}
+
+.join-btn img{
+width:22px;
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.07)}
+100%{transform:scale(1)}
+
+}
+
+/* BUTTON SWEEP */
+
+.join-btn::after{
+
+content:"";
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:120%;
+height:100%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.7),
+transparent
+);
+
+transform:skewX(-20deg);
+
+animation:sweep 3.5s infinite;
+
+}
+
+@keyframes sweep{
+
+0%{left:-120%}
+60%{left:120%}
+100%{left:120%}
+
+}
+
+/* COUNTERS */
+
+.live{
+
+margin-top:18px;
+font-size:16px;
+color:#00ff9d;
+font-weight:bold;
+
+}
+
+.members{
+
+margin-top:6px;
+opacity:.85;
+
+}
+
+/* POPUP */
+
+.popup{
+
+position:fixed;
+
+top:20px;
+left:20px;
+
+background:#0c1f33;
+
+padding:10px 14px;
+
+border-radius:10px;
+
+font-size:14px;
+
+box-shadow:0 0 10px rgba(0,0,0,.5);
+
+opacity:0;
+
+transform:translateY(-20px);
+
+transition:.4s;
+
+}
+
+.popup.show{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="popup" class="popup"></div>
+
+<div class="container">
+
+<div class="profile">
+
+<img src="https://raw.githubusercontent.com/sunraxads/paradoxanalyst/refs/heads/main/IMG_20260314_194716_172.jpg.jpeg">
+
+</div>
+
+<div class="channel">
+Sunrax - Cricket Analyst
+</div>
+
+<div class="tagline">
+Minimum Risk - Maximum Profit
+</div>
+
+<div class="trust">
+98% Accuracy | Trusted by 50k+ Traders
+</div>
+
+<div class="timer">
+Free Access Close in <span id="time">60</span>s
+</div>
+
+<a class="join-btn" href="https://t.me/+TEbpuRAWjMVlYTc1">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+
+JOIN TELEGRAM CHANNEL
+
+</a>
+
+<div class="live">
+<span id="live">68</span> people joined in last 1 minute
+</div>
+
+<div class="members">
+<span id="members">50674</span>+ Members already joined
+</div>
+
+</div>
+
+<script>
+
+/* TIMER + REDIRECT */
+
+let time=60;
+
+let redirect="https://t.me/+TEbpuRAWjMVlYTc1";
+
+setInterval(()=>{
+
+if(time>0){
+
+time--;
+
+document.getElementById("time").innerText=time;
+
+}
+
+if(time==0){
+
+window.location.href=redirect;
+
+}
+
+},1000);
+
+
+/* LIVE JOIN COUNTER */
+
+let live=68;
+
+setInterval(()=>{
+
+let change=Math.floor(Math.random()*3)-1;
+
+live+=change;
+
+if(live<60) live=60;
+
+if(live>85) live=85;
+
+document.getElementById("live").innerText=live;
+
+},2000);
+
+
+/* MEMBER COUNTER */
+
+let members=18674;
+
+setInterval(()=>{
+
+members+=Math.floor(Math.random()*3);
+
+document.getElementById("members").innerText=members;
+
+},5000);
+
+
+/* FAKE JOIN POPUP */
+
+let names=["Rohit","Aman","Rahul","Sandeep","Arjun","Karan","Aditya","Vikas"];
+
+let cities=["Delhi","Mumbai","Pune","Lucknow","Patna","Surat","Indore","Jaipur"];
+
+setInterval(()=>{
+
+let name=names[Math.floor(Math.random()*names.length)];
+
+let city=cities[Math.floor(Math.random()*cities.length)];
+
+let popup=document.getElementById("popup");
+
+popup.innerText=name+" from "+city+" joined";
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+
+popup.classList.remove("show");
+
+},3000);
+
+},7000);
+
+</script>
+
+</body>
+</html>
